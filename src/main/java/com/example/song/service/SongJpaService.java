@@ -39,7 +39,7 @@ public class SongJpaService implements SongRepository{
             songJpaRepository.save(eachSong);
         }
         
-        String returnMessage = String.format("Successfully added %d songs"),count);
+        String returnMessage = String.format("Successfully added %d songs",count);
         return returnMessage;
     }
     
