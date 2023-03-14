@@ -32,6 +32,11 @@ public class SongController{
     public Song addSong(@RequestBody Song song){
         return songService.addSong(song);
     }
+    
+    @PostMapping("/songs/bulk")
+    public String addMultipleSongs(@RequestBody ArrayList<Song> multipleSongs){
+        return songService.addMultipleSongs(multipleSongs);
+    }
 
     @GetMapping("/songs/{songId}")
     public Song getSongById(@PathVariable("songId") int songId){
