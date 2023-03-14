@@ -18,7 +18,7 @@ public class SongJpaService implements SongRepository{
     private SongJpaRepository songJpaRepository;
 
     @Override
-    public ArrayList<Song> getSongs(){
+    public ArrayList<Song> getSongs(){ //GET ALL
         List<Song> songList = songJpaRepository.findAll();
         ArrayList<Song> songs = new ArrayList<>(songList);
 
@@ -26,13 +26,25 @@ public class SongJpaService implements SongRepository{
     }
 
     @Override
-    public Song addSong(Song song){
+    public Song addSong(Song song){ //POST EACH
         songJpaRepository.save(song);
         return song;
     }
-
+    
+    @Override 
+    public String addMultipleSongs(ArrayList<Song> multipleSongs){ //POST MULTIPLE
+        int count = multipleSongs.size();
+        
+        for(Song eachSong : multipleSongs){
+            songJpaRepository.save(eachSong);
+        }
+        
+        String returnMessage = String.format("Successfully added %d songs"),count);
+        return returnMessage;
+    }
+    
     @Override
-    public Song getSongById(int songId){
+    public Song getSongById(int songId){ //GET EACH
         try{
             Song song = songJpaRepository.findById(songId).get();
             return song;
@@ -43,7 +55,7 @@ public class SongJpaService implements SongRepository{
     }
 
     @Override
-    public Song updateSong(int songId, Song song){
+    public Song updateSong(int songId, Song song){ //PUT
         try{
             Song newSong = songJpaRepository.findById(songId).get();
 
@@ -69,7 +81,7 @@ public class SongJpaService implements SongRepository{
     }
 
     @Override
-    public void deleteSong(int songId){
+    public void deleteSong(int songId){ //DELETE
         try{
             songJpaRepository.deleteById(songId);
         }
