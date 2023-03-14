@@ -102,6 +102,40 @@ Creates a new song in the `playlist`. `songId` is auto-incremented.
 
 ### API 3
 
+#### Path: `/songs/bulk`
+
+#### Method: `POST`
+
+#### Description:
+
+Creates multiple songs in the playlist table and returns a text containing the numbers of songs added.
+For example, the below request object contains details of 4 songs.
+
+#### Request
+
+```
+[
+    {
+        "songName": "Repavalu",
+        "lyricist": "Rahaman & Raghukul",
+        "singer": "Sangeetha Srikanth & Bijibal",
+        "musicDirector": "Bijibal"
+    },
+    {
+        "songName": "Soch na sake",
+        "lyricist": "Kumaar",
+        "singer": "Arijith Singh & Tulsi Kumar",
+        "musicDirector": "Amaal Mallik"
+    },
+    ...
+]
+```
+#### Request
+
+Successfully added 4 songs
+
+### API 4
+
 #### Path: `/songs/{songId}`
 
 #### Method: `GET`
@@ -123,7 +157,7 @@ Returns a song based on a `songId`. If the given `songId` is not found in the `p
 }
 ```
 
-### API 4
+### API 5
 
 #### Path: `/songs/{songId}`
 
@@ -155,7 +189,7 @@ If the given `songId` is not found in the `playlist`, raise `ResponseStatusExcep
 
 ```
 
-### API 5
+### API 6
 
 #### Path: `/songs/{songId}`
 
